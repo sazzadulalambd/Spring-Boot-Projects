@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<h1>Hello World!</h1>
+
+<form method="post" action="/home">
+    <!-- Point : "th:value" -->
+    Enter your favorite character:
+    <input type="text" name="text1" th:value="${text1_value}" />
+    <input type="submit" value="Click" />
+</form>
+
+</body>
+</html>
