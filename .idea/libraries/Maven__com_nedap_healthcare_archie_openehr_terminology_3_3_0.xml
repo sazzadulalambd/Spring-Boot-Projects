@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.nedap.healthcare.archie:openehr-terminology:3.3.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/nedap/healthcare/archie/openehr-terminology/3.3.0/openehr-terminology-3.3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/nedap/healthcare/archie/openehr-terminology/3.3.0/openehr-terminology-3.3.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/nedap/healthcare/archie/openehr-terminology/3.3.0/openehr-terminology-3.3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
