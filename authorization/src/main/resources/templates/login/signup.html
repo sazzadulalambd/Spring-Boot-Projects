@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+    <link th:href="@{/webjars/bootstrap/5.1.1/css/bootstrap.min.css}" rel="stylesheet">
+    <script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.1.1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="col-sm-5">
+    <div class="page-header">
+        <h1>User registration</h1>
+    </div>
+    <form method="post" action="/signup" th:object="${signupForm}">
+        <table class="table table-bordered table-hover">
+            <!-- User ID input area -->
+            <tr>
+                <th class="active col-sm-3">User ID</th>
+                <td>
+                    <div class="form-group">
+                        <input type="text" class="form-control" th:field="*{userId}" />
+                    </div>
+                </td>
+            </tr>
+            <!-- Password input area -->
+            <tr>
+                <th class="active">Password</th>
+                <td>
+                    <div class="form-group">
+                        <input type="text" class="form-control" th:field="*{password}" />
+                    </div>
+                </td>
+            </tr>
+            <!-- User name input area -->
+            <tr>
+                <th class="active">User Name</th>
+                <td>
+                    <div class="form-group">
+                        <input type="text" class="form-control" th:field="*{userName}" />
+                    </div>
+                </td>
+            </tr>
+            <!-- Birthday input area -->
+            <tr>
+                <th class="active">Birthday</th>
+                <td>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="MM/dd/yyyy" th:field="*{birthday}" />
+                    </div>
+                </td>
+            </tr>
+            <!-- Age input area -->
+            <tr>
+                <th class="active">Age</th>
+                <td>
+                    <div class="form-group">
+                        <input type="text" class="form-control" th:field="*{age}" />
+                    </div>
+                </td>
+            </tr>
+            <!-- Marriage status input area -->
+            <tr>
+                <th class="active">Marriage</th>
+                <td>
+                    <div class="form-group">
+                        <div th:each="item : ${radioMarriage}">
+                            <input type="radio" th:name="*{marriage}" th:value="${item.value}" th:checked="${signupForm.marriage == item.value}" />
+                            <label th:text="${item.key}"></label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <!-- Error message list display -->
+        <ul>
+            <li th:each="error : ${#fields.detailedErrors()}">
+                <span th:text="${error.message}">Error message</span>
+            </li>
+        </ul>
+        <!-- User registration button -->
+        <button class="btn btn-primary" type="submit">User Registration</button>
+    </form>
+</div>
+</body>
+</html>
