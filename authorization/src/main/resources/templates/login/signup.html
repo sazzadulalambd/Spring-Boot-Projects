@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+    <link th:href="@{/webjars/bootstrap/5.1.1/css/bootstrap.min.css}" rel="stylesheet">
+    <script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.1.1/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+<div class="col-sm-5">
+    <div class="page-header">
+        <h1>User registration</h1>
+    </div>
+    <form method="post" action="/signup" th:object="${signupForm}">
+        <table class="table table-bordered table-hover">
+            <!-- User ID input area -->
+            <tr>
+                <th class="active col-sm-3">User ID</th>
+                <td>
+                    <!-- Point 1: Add CSS for error -->
+                    <div class="form-group" th:classappend="${#fields.hasErrors('userId')} ? 'has-error'">
+                        <input type="text" placeholder="Enter Email Address" class="form-control" th:field="*{userId}" />
+                        <!-- Point 2: Display of individual error message -->
+                        <span class="text-danger" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}">
+                                userId error
+                            </span>
+                    </div>
+                </td>
+            </tr>
+            <!-- User name input area -->
+            <tr>
+                <th class="active">User Name</th>
+                <td>
+                    <!-- Point 1: Add CSS for error -->
+                    <div class="form-group" th:classappend="${#fields.hasErrors('userName')} ? 'haserror'">
+                        <input type="text" placeholder="Enter user name" class="form-control" th:field="*{userName}" />
+                        <!-- Point 2: Display of individual error message -->
+                        <span class="text-danger" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">
+                                userName error
+                            </span>
+                    </div>
+                </td>
+            </tr>
+            <!-- Birthday input area-->
+            <tr>
+                <th class="active">Birthday</th>
+                <td>
+                    <!-- Point 1: Add CSS for error -->
+                    <div class="form-group" th:classappend="${#fields.hasErrors('birthday')} ? 'haserror'">
+                        <input type="text" class="form-control" placeholder="MM/DD/YYYY" th:field="*{birthday}" />
+                        <!-- Point 2: Display of individual error message -->
+                        <span class="text-danger" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}">
+                                birthday error
+                            </span>
+                    </div>
+                </td>
+            </tr>
+            <!-- Age input area-->
+            <tr>
+                <th class="active">Age</th>
+                <td>
+                    <!-- Point 1: Add CSS for error -->
+                    <div class="form-group" th:classappend="${#fields.hasErrors('age')} ? 'has-error'">
+                        <input type="text" placeholder="Enter valid age" class="form-control" th:field="*{age}" />
+                        <!--Point 2: Display of individual error message -->
+                        <span class="text-danger" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">
+                                age error
+                            </span>
+                    </div>
+                </td>
+            </tr>
+            <!-- Marriage status input area -->
+            <tr>
+                <th class="active">Marriage</th>
+                <td>
+                    <div class="form-group">
+                        <!-- Radio button -->
+                        <div th:each="item : ${radioMarriage}">
+                            <input type="radio" name="radioMarrige" th:text="${item.key}" th:value="${item.value}" th:field="*{marriage}">
+                            </input>
+                        </div>
+                        <!-- Point 2: Display of individual error message -->
+                        <span class="text-danger" th:if="${#fields.hasErrors('marriage')}" th:errors="*{marriage}">
+                                marriage error
+                            </span>
+                    </div>
+                </td>
+            </tr>
+            <!-- Password input area-->
+            <tr>
+                <th class="active">Password</th>
+                <td>
+                    <!-- Point 1: Add CSS for error -->
+                    <div class="form-group" th:classappend="${#fields.hasErrors('password')} ? 'haserror'">
+                        <input type="text" placeholder="Enter a valid password" class="form-control" th:field="*{password}" />
+                        <!--Point 2: Display of individual error message -->
+                        <span class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+                                password error
+                            </span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <!-- List error messages -->
+        <ul>
+            <li th:each="error : ${#fields.detailedErrors()}">
+                <span th:text="${error.message}">Error message</span>
+            </li>
+        </ul>
+        <!-- User registration button -->
+        <button class="btn btn-primary" type="submit">User Registration</button>
+    </form>
+</div>
+</body>
+
+</html>

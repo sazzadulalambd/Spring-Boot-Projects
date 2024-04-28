@@ -18,11 +18,17 @@ public class HomeService {
         if (map == null || map.isEmpty()) {
             return null;
         }
+// Get value from Map
+        int employeeId = (Integer) map.get("id");
+        String employeeName = (String) map.get("name");
+        int employeeAge = (Integer) map.get("age");
+        String employeeDepartment = (String) map.get("department");
+// Set values in the Employee class
         Employee employee = new Employee();
-        employee.setEmployeeId((int) map.get("id"));
-        employee.setEmployeeName((String) map.get("name"));
-        employee.setEmployeeAge((int) map.get("age"));
-        employee.setEmployeeDepartment((String) map.get("department"));
+        employee.setEmployeeId(employeeId);
+        employee.setEmployeeName(employeeName);
+        employee.setEmployeeAge(employeeAge);
+        employee.setEmployeeDepartment(employeeDepartment);
         return employee;
     }
 
@@ -35,16 +41,10 @@ public class HomeService {
 //public Employee findOne(int id) {
 //// Search execution
 //    Map<String, Object> map = homeRepository.findOne(id);
-//// Get value from Map
-//    int employeeId = (Integer) map.get("id");
-//    String employeeName = (String) map.get("name");
-//    int employeeAge = (Integer) map.get("age");
-//    String employeeDepartment = (String) map.get("department");
-//// Set values in the Employee class
-//    Employee employee = new Employee();
-//    employee.setEmployeeId(employeeId);
-//    employee.setEmployeeName(employeeName);
-//    employee.setEmployeeAge(employeeAge);
-//    employee.setEmployeeDepartment(employeeDepartment);
-//    return employee;
-//}
+//
+//Employee employee = new Employee();
+//        employee.setEmployeeId((int) map.get("id"));
+//        employee.setEmployeeName((String) map.get("name"));
+//        employee.setEmployeeAge((int) map.get("age"));
+//        employee.setEmployeeDepartment((String) map.get("department"));
+//        return employee;

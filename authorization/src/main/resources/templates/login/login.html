@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <!-- Point 1: Bootstrap settings -->
+    <link th:href="@{/webjars/bootstrap/5.1.1/css/bootstrap.min.css}"
+          rel="stylesheet"></link>
+    <script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.1.1/js/bootstrap.min.js}"></script>
+    <title>Login</title>
+</head>
+<body class="text-center">
+<h1>Login</h1>
+<form method="post" action="/login">
+    <!-- User ID -->
+    <label>User ID</label>
+    <input type="text" /><br/>
+    <br />
+    <!-- Password -->
+    <label>Password</label>
+    <input type="password" /><br/>
+    <br />
+    <!-- Login button -->
+    <button class="btn btn-primary" type="submit">Login</button>
+</form>
+<br />
+<!-- Point 2: "th:href" attribute -->
+<!-- Link to user registration screen -->
+<a th:href="@{'/signup'}">Click here for new user registration</a>
+</body>
+</html>

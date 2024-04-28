@@ -8,12 +8,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class HomeRepository {
 
-    private final JdbcTemplate jdbcTemplate;
-
     @Autowired
-    public HomeRepository(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    private JdbcTemplate jdbcTemplate;
 
     public Map<String, Object> findOne(int id) {
         String query = "SELECT id, name, age, department FROM employee WHERE id=?";
@@ -22,6 +18,13 @@ public class HomeRepository {
 
 
 }
+
+//private final JdbcTemplate jdbcTemplate;
+//
+//@Autowired
+//public HomeRepository(JdbcTemplate jdbcTemplate) {
+//    this.jdbcTemplate = jdbcTemplate;
+//}
 
 //
 //public Map<String, Object> findOne(int id) {
