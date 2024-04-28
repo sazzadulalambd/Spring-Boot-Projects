@@ -25,7 +25,8 @@ public class SignupForm {
     // Required input, length 4-100 digits, alphanumeric only
 
     @Length(min = 4, max = 100)
-    @Pattern(regexp = "^[a-zA-Z0-9]+$")
+//    @Pattern(regexp = "^[a-zA-Z0-9]+$")
+    @Pattern(regexp = "^[a-zA-Z0-9!@#$%^&*(-)_+]+$")
     @NotBlank
     private String password;
 
@@ -35,7 +36,7 @@ public class SignupForm {
 
     // Required input
     @NotNull
-    @DateTimeFormat(pattern = "mm/dd/yyyy")
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Date birthday;
 
     // Value is from 20 to 100
