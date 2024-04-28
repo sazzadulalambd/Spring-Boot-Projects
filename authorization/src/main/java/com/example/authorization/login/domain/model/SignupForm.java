@@ -35,7 +35,7 @@ public class SignupForm {
 
     // Required input
     @NotNull
-    @DateTimeFormat(pattern = "MM/DD/YYYY")
+    @DateTimeFormat(pattern = "mm/dd/yyyy")
     private Date birthday;
 
     // Value is from 20 to 100
