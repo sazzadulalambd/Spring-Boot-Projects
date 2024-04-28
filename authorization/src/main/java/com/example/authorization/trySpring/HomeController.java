@@ -1,4 +1,5 @@
 package com.example.authorization.trySpring;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,7 @@ public class HomeController {
     }
 
     @PostMapping("/home")
-    public String postRequest(@RequestParam("text1") String str, Model model) {
+    public String postRequest(@RequestParam("text1") String str, @NotNull Model model) {
         model.addAttribute("sample", str);
         return "homeResponse";
     }
