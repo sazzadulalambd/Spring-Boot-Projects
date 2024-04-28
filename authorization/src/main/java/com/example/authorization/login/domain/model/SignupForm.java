@@ -22,9 +22,9 @@ public class SignupForm {
     @Email
     private String userId;
 
-    // Required input, length 4-100 digits, alphanumeric only
+    // Required input, length 4-16 digits, alphanumeric only
 
-    @Length(min = 4, max = 100)
+    @Length(min = 4, max = 16)
 //    @Pattern(regexp = "^[a-zA-Z0-9]+$")
     @Pattern(regexp = "^[a-zA-Z0-9!@#$%^&*(-)_+]+$")
     @NotBlank
