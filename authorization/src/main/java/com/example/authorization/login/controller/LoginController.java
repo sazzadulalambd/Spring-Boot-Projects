@@ -16,6 +16,8 @@ public class LoginController {
     @PostMapping("/login")
     public String postLogin(Model model) {
         // Transition to home screen
-        return "login/login";
+        //return "login/login";
+        return "redirect:login/home";
+
     }
 }

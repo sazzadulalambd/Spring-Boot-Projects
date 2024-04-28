@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"></meta>
+    <!-- Bootstrap settings -->
+    <link th:href="@{/webjars/bootstrap/5.1.1/css/bootstrap.min.css}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.1.1/js/bootstrap.min.js}"></script>
+    <!-- Read CSS -->
+    <link th:href="@{/css/home.css}" rel="stylesheet"></link>
+    <title>Home</title>
+</head>
+<body>
+<!-- ===== Header (navigation bar) ===== -->
+<nav class="navbar navbar-inverse navbar-fixed-top bg-secondary">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand text-white" href="#">Dashboard</a>
+        </div>
+        <form method="post" th:action="@{/logout}">
+            <button class="btn btn-link pull-right navbar-brand text-white" type="submit">
+                Logout
+            </button>
+        </form>
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <!-- ===== Side bar ===== -->
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Menu</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a th:href="@{'/userList'}" class="nav-link px-0"> <i class="fs-6 bi bi-person-lines-fill"></i> <span class="d-none d-sm-inline">Employee List</span></a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <i class="fs-6 bi bi-calendar-x"></i> <span class="d-none d-sm-inline">Calender</span></a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <hr>
+            </div>
+        </div>
+        <!-- ===== Contents ===== -->
+        <div class="col py-3">
+            <div th:include="__${contents}__"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
