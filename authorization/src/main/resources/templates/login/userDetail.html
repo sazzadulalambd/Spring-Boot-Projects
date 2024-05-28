@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div th:fragment="userDetail_contents">
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="page-header">
+                <h1>User Details (<span th:text="${signupForm.userName}"></span>)</h1>
+<!--                <p th:text="'User ID: ' + ${signupForm.userId}"></p>-->
+<!--                <p th:text="'Password: ' + ${signupForm.password}"></p>-->
+<!--                <p th:text="'User Name: ' + ${signupForm.userName}"></p>-->
+<!--                <p th:text="'Birthday: ' + ${signupForm.birthday}"></p>-->
+<!--                <p th:text="'Age: ' + ${signupForm.age}"></p>-->
+<!--                <p th:text="'Marriage Status: ' + ${signupForm.marriage}"></p>-->
+            </div>
+            <form method="post" th:action="@{/userDetail}" th:object="${signupForm}">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <!-- User ID (not enterable) -->
+                        <th class="active col-sm-2">User ID</th>
+                        <td class="col-sm-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control"
+                                       th:field="*{userId}"
+                                       readonly="readonly" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- Password -->
+                        <th class="active">Password</th>
+                        <td>
+                            <div class="form-group"
+                                 th:classappend="${#fields.hasErrors('password')} ? 'haserror'">
+                                <input type="text" class="form-control"
+                                       th:field="*{password}" />
+                                <span class="text-danger"
+                                      th:if="${#fields.hasErrors('password')}"
+                                      th:errors="*{password}">
+                                password error
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- User Name -->
+                        <th class="active">User Name</th>
+                        <td>
+                            <div class="form-group"
+                                 th:classappend="${#fields.hasErrors('userName')} ? 'haserror'">
+                                <input type="text" class="form-control"
+                                       th:field="*{userName}" />
+                                <span class="text-danger"
+                                      th:if="${#fields.hasErrors('userName')}"
+                                      th:errors="*{userName}">
+                                userName error
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- Birthday -->
+                        <th class="active">Birthday</th>
+                        <td>
+                            <div class="form-group"
+                                 th:classappend="${#fields.hasErrors('birthday')} ? 'haserror'">
+                                <input type="text" class="form-control"
+                                       placeholder="MM/dd/yyyy"
+                                       th:field="*{birthday}" />
+                                <span class="text-danger"
+                                      th:if="${#fields.hasErrors('birthday')}"
+                                      th:errors="*{birthday}">
+                                birthday error
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- Age -->
+                        <th class="active">Age</th>
+                        <td>
+                            <div class="form-group"
+                                 th:classappend="${#fields.hasErrors('age')} ? 'has-error'">
+                                <input type="text" class="form-control"
+                                       th:field="*{age}" />
+                                <span class="text-danger"
+                                      th:if="${#fields.hasErrors('age')}"
+                                      th:errors="*{age}">
+                                age error
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- Marriage -->
+                        <th class="active">Marriage</th>
+                        <td>
+                            <div class="form-group">
+                                <div th:each="item : ${radioMarriage}">
+                                    <input type="radio" name="radioMarrige"
+                                           th:value="${item.value}"
+                                           th:text="${item.key}"
+                                           th:field="*{marriage}">
+                                    </input>
+                                </div>
+                                <span class="text-danger"
+                                      th:if="${#fields.hasErrors('marriage')}"
+                                      th:errors="*{marriage}">
+                                marriage error
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <!-- Update button -->
+                <button class="btn btn-primary btn-lg pull-right"
+                        type="submit"
+                        name="update">
+                    Update
+                </button>
+                <!-- Delete button -->
+                <button class="btn btn-danger btn-lg" type="submit" name="delete">
+                    Delete
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

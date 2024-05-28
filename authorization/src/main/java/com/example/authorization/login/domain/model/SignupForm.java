@@ -47,4 +47,8 @@ public class SignupForm {
     // Only false is possible
     @AssertFalse
     private boolean marriage;
+
+    @NotBlank
+    private String role;
+
 }
